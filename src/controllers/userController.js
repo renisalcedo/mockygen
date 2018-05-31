@@ -10,6 +10,11 @@ class User {
     this.telPrefix = userData.telPrefix
   }
 
+  generateUsername() {
+    const rand = Math.floor(Math.random() * this.username.length)
+    return this.username[rand]
+  }
+
   generateEmails(many) {
     const user = this.username
     let userEmails = []

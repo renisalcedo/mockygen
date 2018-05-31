@@ -24,6 +24,7 @@ class DataGenerator {
     let newUser = {}
 
     // POPULATE DATA
+    newUser.username = user.generateUsername()
     newUser.email = user.generateEmails(1)
     newUser.password = user.minCharPassword()
     newUser.age = user.generateAge()
