@@ -14,7 +14,7 @@ class User {
     const user = this.username
     let userEmails = []
 
-    for(let i = 0; i < many; i++) {
+    for (let i = 0; i < many; i++) {
       // Creates email vendor
       let randomEmailVendor = Math.floor(Math.random() * this.emails.length)
       let randomEmailUser = Math.floor(Math.random() * user.length)
@@ -31,10 +31,10 @@ class User {
   generateAge(min = 10, max = 40) {
     // Ensures min and max to be integers
     min = Math.ceil(min)
-    max = Math.floor(max)+1
+    max = Math.floor(max) + 1
 
     // Return age between min and max
-    return Math.floor(Math.random() * (max-min) + min)
+    return Math.floor(Math.random() * (max - min) + min)
   }
 
   generatePhoneNumber(state = 'newYork') {
@@ -42,11 +42,11 @@ class User {
     let phoneNumber = this.telPrefix[state]
     let digits = Math.floor(Math.random() * 9)
     // Generates digits for phone number
-    for(let i = 0; i < 6; i++) {
+    for (let i = 0; i < 6; i++) {
       const rand = Math.floor(Math.random() * 9)
       digits += String(rand)
     }
-    phoneNumber = phoneNumber+digits
+    phoneNumber = phoneNumber + digits
     // Returns integer phone number
     return parseInt(phoneNumber)
   }
@@ -54,7 +54,7 @@ class User {
   minCharPassword() {
     let password = ''
     // Returns a default 8 length password
-    while(password.length < 8) {
+    while (password.length < 8) {
       let rand = Math.floor(Math.random() * this.charData.length)
       password += this.charData[rand]
     }
@@ -63,7 +63,7 @@ class User {
 
   specialCharPassword(many) {
     let password = ''
-    while(password.length < many+1) {
+    while (password.length < many + 1) {
       let randChar = Math.floor(Math.random() * this.charData.length)
       let randSpecialChar = Math.floor(Math.random() * this.specialChar.length)
 
