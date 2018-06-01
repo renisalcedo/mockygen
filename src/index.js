@@ -14,6 +14,7 @@ class DataGenerator {
     const user = new User(userData)
 
     // If there is no param the function will get called empty
+    console.log(generate)
     return param ? user[generate](param) : user[generate]()
   }
 
