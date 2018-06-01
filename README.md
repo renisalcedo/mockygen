@@ -9,16 +9,13 @@ Mockygen is a mock data generator with a model pattern. It works similar to crea
 
 ```javascript
 const user = Mockygen.schema({
-  username: {
-    type: 'default'
-  },
+  username: 'default',
   password: {
-    type: String,
     min: 8,
     specialChars: true
   },
   age: {
-    type: Number
+    max: 50
   }
 })
 ```

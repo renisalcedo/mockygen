@@ -15,7 +15,7 @@ class User {
     return this.username[rand]
   }
 
-  generateEmails(many) {
+  generateEmail(many) {
     const user = this.username
     let userEmails = []
 
