@@ -4,6 +4,7 @@ class Mockygen {
   constructor() {
     this.props = [
       'user',
+      'custom',
       'name',
       'password',
       'email',
@@ -16,9 +17,19 @@ class Mockygen {
   schema(request) {
     let data = {}
 
-    if (request.hasOwnProperty('user')) {
+    // CREATE USER IF DEFAULT OR DELETE THE USER REQUEST
+    if (request.user === 'default') {
+      // POPULATE DATA USER && REMOVE THE USER FIELD FROM THE REQUEST
       data.user = DataGenerator.defaultUserGenerator()
       delete request.user
+    } else {
+      delete request.user
+    }
+
+    // POPULATE DATA FROM CUSTOM FIELD
+    if (request.custom !== undefined) {
+      data.custom = this.customField(request.custom)
+      delete request.custom
     }
 
     for (let i = 0; i < this.props.length; i++) {
@@ -37,6 +48,16 @@ class Mockygen {
     }
 
     return data
+  }
+
+  customField(request) {
+    let fields = {}
+
+    for (let field in request) {
+      fields[field] = request[field]
+    }
+
+    return fields
   }
 
   // HANDLES THE PARAMETERS DEPENDING ON TYPE
@@ -64,7 +85,11 @@ console.log(
   gen.schema({
     user: 'default',
     username: 'default',
-    email: 2
+    email: 2,
+    custom: {
+      username: 'Reni',
+      password: 'Bla'
+    }
   })
 )
 
